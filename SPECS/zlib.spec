@@ -1,7 +1,7 @@
 Summary: The compression and decompression library
 Name: zlib
 Version: 1.2.7
-Release: 17%{?dist}
+Release: 17.1%{?dist}
 # /contrib/dotzlib/ have Boost license
 License: zlib and Boost
 Group: System Environment/Libraries
@@ -65,16 +65,16 @@ developing applications which use minizip.
 
 %prep
 %setup -q
-%patch0 -p1 -b .fixuncrypt
+%patch -P0 -p1 -b .fixuncrypt
 %ifarch s390 s390x
-%patch1 -p1 -b .optimized-deflate
+%patch -P1 -p1 -b .optimized-deflate
 %endif
-%patch2 -p1 -b .z-flush
+%patch -P2 -p1 -b .z-flush
 iconv -f iso-8859-2 -t utf-8 < ChangeLog > ChangeLog.tmp
 mv ChangeLog.tmp ChangeLog
 
-%patch3 -p1
-%patch4 -p1
+%patch -P3 -p1
+%patch -P4 -p1
 
 %build
 %ifarch ppc64 ppc64le
@@ -138,6 +138,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/*.la
 %{_libdir}/pkgconfig/minizip.pc
 
 %changelog
+* Wed Mar 11 2026 Philippe Coval <philippe.coval@vates.tech> - 1.2.7-17.1
+- Rebuild to bump version for xcp-ng-deps's Obsolete of dev packages
+- Update obsolete patch macro
+
 * Thu May 19 2016 jchaloup <jchaloup@redhat.com> - 1.2.7-17
 - Fix writing empty files on gzopen()/gzclose()
   resolves: #1337441
