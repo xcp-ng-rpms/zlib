@@ -1,7 +1,7 @@
 Summary: The compression and decompression library
 Name: zlib
 Version: 1.2.7
-Release: 17.1%{?dist}
+Release: 17.1~XCPNG3030.1%{?dist}
 # /contrib/dotzlib/ have Boost license
 License: zlib and Boost
 Group: System Environment/Libraries
